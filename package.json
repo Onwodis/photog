@@ -338,7 +338,7 @@
     "build":"npm install",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon node app.js",
-    "start": "node app.js"
+    "start": "node dist/app.js"
   },
   "repository": {
     "type": "git",
