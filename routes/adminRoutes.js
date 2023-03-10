@@ -22,6 +22,8 @@ router.get('/getschools', checkUser, adminControllers.getschools);
 router.get('/getclasses/:schoolcode', checkUser, adminControllers.getclasses);
 router.get('/getstudents/:class', checkUser, adminControllers.getstudents);
 router.get('/schoolcode/:hashcode', checkUser, adminControllers.hashcode);
+router.get('/packages', checkUser, adminControllers.packages);
+router.get('/orders', checkUser, adminControllers.orders);
 router.get('/', adminControllers.Home);
 router.get('/indstudents/:userid', checkUser, adminControllers.studentupl);
 

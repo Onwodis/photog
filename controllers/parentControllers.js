@@ -168,12 +168,15 @@ module.exports = {
           student.lastseen=currentDate()
           await student.save()
           const pictures = await wmModel.find({ studentuserid :student.userid});
+          console.log(pictures+ " is wm")
           res.render('pdb', {
             layout:'parent',
             child:student,
             parent: ifusername,
+            icon:"success",
+            title:"Logged in Successfully",
             pictures: pictures,
-            alerte: process.env.loginwelcome + ifusername.username,
+            alerte: "Welcom " + capitalise(ifusername.username),
           });
         }
       } else {

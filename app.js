@@ -15,8 +15,8 @@ const homeRoutes = require('./routes/homeRoutes')
 const studentRoutes = require('./routes/studentRoutes')
 const adminRoutes = require('./routes/adminRoutes')
 const parentRoutes = require('./routes/parentRoutes')
-const photographerRoutes = require('./routes/photographerRoutes')
-const teacherRoutes = require('./routes/teacherRoutes')
+// const photographerRoutes = require('./routes/photographerRoutes')
+// const teacherRoutes = require('./routes/teacherRoutes')
 const cookieParser = require('cookie-parser')
 const {setUser} = require('./middleWare/setUser')
 // const {bila} = require('./middleWare/setUser')
@@ -69,8 +69,8 @@ app.use('/',homeRoutes)
 app.use('/student', studentRoutes);
 app.use('/admin', adminRoutes);
 app.use('/parent', parentRoutes);
-app.use('/teacher', teacherRoutes);
-app.use('/photographer', photographerRoutes);
+// app.use('/teacher', teacherRoutes);
+// app.use('/photographer', photographerRoutes);
 // 5. Configure View Engine
 
 app.engine('hbs', exphbs.engine({

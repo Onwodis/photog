@@ -98,26 +98,21 @@ async function addTextOnImage(pictowaterm, name) {
 }
 module.exports = {
   uploadpictures: async (req, res) => {
-    // let file = req.files.pic;
-    // const imga=req.files.imga
-    // const imgb=req.files.imgb
-    // const imgc=req.files.imgc
-    // const imgd=req.files.imgd
-    const userid = req.cookies.studentuserid
-    const student = await Students.findOne({userid });
+    const userid = req.cookies.studentuserid;
+    const student = await Students.findOne({ userid });
     let fileDir = './public/uploads/';
 
-    if(req.files){
-      const file = req.files.imga
+    if (req.files) {
+      const file = req.files.imga;
       // console.log(file )
-      
+
       const fileName = file.name.split(' ').join('_');
       await file.mv(fileDir + fileName, (err) => {
         if (err) throw err;
       });
 
       const iffile = await pictureModel.findOne({ pixname: fileName });
-      if(!iffile){
+      if (!iffile) {
         try {
           await pictureModel.deleteOne({ pixname: fileName });
           addTextOnImage(`public/uploads/${fileName}`, fileName);
@@ -167,8 +162,7 @@ module.exports = {
         } catch (err) {
           console.log(err);
         }
-      }
-      else{
+      } else {
         res.render('uplstd', {
           layout: 'upl',
           admin: req.user,
@@ -178,8 +172,7 @@ module.exports = {
           alerte: 'you have to upload a new picture ',
         });
       }
-      
-      
+
       // for(let i=0; i<file.length; i++){
       //   file[i].mv('')
       //   const fileName = file[i].name.split(" ").join('_')
@@ -206,7 +199,7 @@ module.exports = {
       //     });
 
       //     // res.redirect('/photographer');
-          
+
       //   } catch (err) {
       //     console.log(err);
       //     // const studentss = await studentModel.find({
@@ -232,19 +225,15 @@ module.exports = {
       //   title: 'File(s) uploaded successfully',
       //   alerte: 'Success !',
       // });
-
-    }
-    else{
-
+    } else {
       res.render('uplstd', {
         layout: 'upl',
         admin: req.user,
         student: student,
-        icon:'error',
-        title:'Empty files are not allowed for upload',
-        alerte:"you have to upload a minimum of 1 file "
+        icon: 'error',
+        title: 'Empty files are not allowed for upload',
+        alerte: 'you have to upload a minimum of 1 file ',
       });
-
     }
     // const filesize = file.size / 1000;
     // console.log(filesize + 'KB is file size');
@@ -308,12 +297,30 @@ module.exports = {
   },
   studentupl: async (req, res) => {
     const userid = req.params.userid;
-    res.cookie("studentuserid",userid)
+    res.cookie('studentuserid', userid);
     const student = await Students.findOne({ userid });
     res.render('uplstd', {
       layout: 'upl',
       admin: req.user,
       student: student,
+    });
+
+    // lets proceed with the next step which is encrypting our password before saving
+  },
+  packages: async (req, res) => {
+    
+    res.render('packages', {
+      layout: 'admin',
+      admin: req.user,
+    });
+
+    // lets proceed with the next step which is encrypting our password before saving
+  },
+  orders: async (req, res) => {
+    
+    res.render('orders', {
+      layout: 'admin',
+      admin: req.user,
     });
 
     // lets proceed with the next step which is encrypting our password before saving

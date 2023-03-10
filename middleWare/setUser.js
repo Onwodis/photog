@@ -7,9 +7,9 @@ const Admin = require('../models/adminModel');
 
 const setUser = async (req, res, next) => {
   const auth = req.cookies.auth;
-  req.admin= await Admin.findOne({username:"sammy"})
-  req.students= await Student.find()
-  req.schools= await School.find()
+  req.admin = await Admin.findOne({ username: 'sammy' });
+  req.students = await Student.find();
+  req.schools = await School.find();
 
   if (auth) {
     const usertype = auth.split('/')[0];
@@ -23,41 +23,9 @@ const setUser = async (req, res, next) => {
           req.user.username
       );
     }
-    else if (usertype == 'student') {
-      req.user = await Student.findOne({ userid: userid });
-      // await req.user.save();
-      console.log(
-        'after checking current user is a student whose username is ' +
-          req.user.username
-      );
-    }
-    else if (usertype == 'teacher') {
-      req.user = await Teacher.findOne({ userid: userid });
-      await req.user.save();
-
-      console.log(
-        'after checking current user is a teacher whose username is ' +
-          req.user.username
-      );
-    } else if (usertype == 'admin') {
-      req.user = await School.findOne({ userid: userid });
-      // await req.user.save();
-
-      console.log(
-        'after checking current user is a admin whose username is ' +
-          req.user.username
-      );
-    } else if (usertype === 'photographer') {
-      req.user = await Photographer.findOne({ userid: userid });
-      // await req.user.save();
-
-      console.log(
-        'after checking current user is a photographer whose username is ' +
-          req.user.username
-      );
-    } else if (usertype == 'parent') {
+    else{
       req.user = await Parent.findOne({ userid: userid });
-      // await req.user.save();
+      
 
       console.log(
         'after checking current user is a parent whose username is ' +
@@ -87,32 +55,13 @@ const checkUser = async (req, res, next) => {
         'current user is an Admin whose username is ' + req.user.username
       );
     }
-    else if (usertype === 'student') {
-      req.user = await Student.findOne({ userid: userid });
+    else{
+      req.user = await Parent.findOne({ userid: userid });
 
       console.log(
-        'current user is a student whose username is ' + req.user.username
+        'current user is an Parent whose namename is ' + req.user.username
       );
-    }
-    else if (usertype === 'teacher') {
-      req.user = await Teacher.findOne({ userid: userid });
 
-      console.log(
-        'current user is a teacher whose username is' + req.user.username
-      );
-    } else if (usertype === 'admin') {
-      req.user = await Admin.findOne({ userid: userid });
-
-      console.log(
-        'current user is a admin whose username is' + req.user.username
-      );
-    } else if (usertype === 'photographer') {
-      req.user = await Photographer.findOne({ userid });
-
-      console.log(
-        'after checking current user is a photographer whose username is ' +
-          req.user.username
-      );
     }
 
     await res.cookie('auth', auth, {
@@ -126,7 +75,7 @@ const checkUser = async (req, res, next) => {
 
     res.render('home', {
       icon: 'error',
-      title:"Pls login again",
+      title: 'Pls login again',
       alerte: 'Your Auth has expired ',
     });
     console.log('authentication expired ');
