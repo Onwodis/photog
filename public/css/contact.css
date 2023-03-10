@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Source+Sans+Pro:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@700&family=Poppins:wght@500&family=Source+Sans+Pro:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300&family=Mulish&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container{
+    max-width: 1170px;
+    margin: 0 auto;
+}
+.grid{
+    display: grid;
+    grid-template-columns: repeat(12 ,1fr);
+    
+}
+
+.contact-text-1{
+    grid-column: span 4;
+    align-self: center;
+
+    background-color: rgb(186, 59, 186);
+    font-family: 'jost', sans-serif;
+    text-transform: capitalize;
+    color: white;
+    width: auto;
+
+   
+    padding: 50px 60px 200px 60px;
+
+}
+.text p a{
+    text-decoration: none;
+    color: white;
+  
+}
+.text{
+    padding-bottom: 30px;
+}
+
+.contact-text-2{
+    grid-column: span 8;
+    
+    border: 1px solid;
+}
+.grid-1{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr) ;
+    gap: 15px;
+}
+.grid-2{
+    display: grid;
+    grid-template-columns: repeat(12 , 1fr) ;
+    gap: 15px;
+}
+.grid-4{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr) ;
+    gap: 15px;
+}
+.grid-1 .icon{
+    grid-column: span 1;
+}
+.grid-1 .text{
+    grid-column: span 11;
+}
+.grid-2 .icon{
+    grid-column: span 1;
+}
+.grid-2 .text{
+    grid-column: span 11;
+}
+.grid-4 .icon{
+    grid-column: span 1;
+}
+.grid-4 .text{
+    grid-column: span 11;
+}
+.section{
+    padding: 150px 0 150px;
+}
+.sub-heading{
+    line-height: 30px;
+}
+.heading p{
+    padding-bottom: 50px;
+}
+.heading h3{
+    padding-bottom: 20px;
+    font-family: 'mulish', sans-serif;
+    font-size: 1.5rem;
+
+}
+.icons{
+    margin-top: 25%;
+    display: flex;
+    justify-content: space-between;
+    
+    font-size: 1.5rem;
+}
+.contact-padding{
+    padding: 5% 20% 10% 20% ;
+    height: auto;
+}
+.heading-1 h1{
+    font-family: 'mulish' ,sans-serif;
+    font-size: 2rem;
+    text-transform: capitalize;
+    padding-bottom: 20px;
+    font-weight: 700;
+}
+.heading-1 p{
+    font-family: 'jost' ,sans-serif;
+    text-transform: capitalize;
+
+    padding-bottom: 15px;
+}
+.input-control p{
+    padding-bottom: 10px;
+    font-family: 'jost' ,sans-serif;
+    text-transform: capitalize;
+    
+}
+.input-control input{
+    width: 70%;
+    height: 4.5vh;
+    padding-left: 10px;   
+}
+.input-control{
+    margin-bottom: 3%;
+    width: 100%;
+}
+.input-control select{
+    height: 4.5vh;
+    text-align: center;
+    
+}
+.fa{
+    margin-right: 8px;
+}
+.input-control .input-1{
+    height: 15vh;
+    width: 80%;
+    text-align: start;
+}
+.grid-9{
+    display: grid;
+    grid-template-columns:repeat(auto-fit, minmax(200px, 2fr));
+   
+    
+}
+.grid-9 label{
+    font-family: 'jost', sans-serif;
+    padding-bottom: 10%;
+    text-transform: capitalize;
+}
+.grid-9 input{
+    margin-right: 10px;
+}
+.button{
+    text-align: left;
+}
+.button a button{
+    padding: 15px;
+    font-family: 'jost', sans-serif;
+    text-transform: capitalize;
+    font-weight: 900;
+    width: 32vw;
+    border-radius: 50px;
+    border: none;
+    background-color: rgb(186, 59, 186);
+    color: white;
+    font-size: 1.2rem;
+}

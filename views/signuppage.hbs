@@ -1,0 +1,108 @@
+<div class="page-wrapper">
+    <header>
+        <div class="containers">
+            <div class="logo">
+                <!-- <h1>PH<span><img src="./images/logo.png" alt=""></span>TO<span class="photo-g">G</span></h1> -->
+                <a href="/">
+                    <img src="/images/Screenshot 2023-03-01 021642.png" alt="" />
+                </a>
+            </div>
+            <nav>
+                <input type="checkbox" name="" class="show-none" id="show-burger" />
+                <ul>
+                    <label for="show-burger">
+                        <i class="icon-close style-close" id="closebtn"></i>
+                    </label>
+                    <li><a href="/service.html">Services</a></li>
+                    <li><a href="/about.html">About Us</a></li>
+                    <li><a href="/contact.html">Contact Us</a></li>
+                    <li><a href="/faqs.html">FAQs</a></li>
+                </ul>
+            </nav>
+            <!-- <div class="account">
+                    <a href="">
+                        <img src="./images/faces/face1.jpg" alt="">
+                        <i class="icon-arrow_drop_down"></i>
+                    </a>
+                </div> -->
+
+            <label for="show-burger">
+                <i class="icon-bars" id="closebtn"></i>
+            </label>
+        </div>
+    </header>
+
+
+
+
+
+    <!-- contact section starts -->
+    <section class="contact" id="contact">
+        <div class="form-whole">
+            <div class="head">
+                <h1>
+                    Signup Details
+                </h1>
+            </div>
+            <div class="contact-form">
+                <form action="/parent/parentsignup" id="loginAccount" method="post">
+                    <div class="input-bottom" id="name">
+                        <p>FullName *</p>
+                        <input type="text" name="name" id="signSurname" placeholder="e.g Michael Williams"
+                            class="input-control" required />
+                    </div>
+                    <div class="input-bottom" id="name">
+                        <p>Username *</p>
+                        <input type="text" name="username" id="signSurname" placeholder="e.g Simeon"
+                            class="input-control" required />
+                    </div>
+                    <div class="input-bottom">
+                        <p>Email Address *</p>
+                        <input type="text" name="email" id="signEmailaddress" placeholder="example@gmail.com"
+                            class="input-control" required />
+                    </div>
+                    <div class="input-bottom">
+                        <p>Password *</p>
+                        <input type="password" name="pwrd" id="signEmailaddress" placeholder="Enter your password"
+                            class="input-control" required />
+                    </div>
+                    <div class="input-bottom">
+                        <p>Confirm Password *</p>
+                        <input type="password" name="cpwrd" id="signEmailaddress" placeholder="confirm password"
+                            class="input-control" required />
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="input-bottom">
+                                <p>Phone Number *</p>
+                                <input type="text" name="phone" id="signPhonenumber" placeholder="070 333 444 555"
+                                    class="input-control" required />
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <div class="input-bottom">
+                                <p>Reference Code *</p>
+                                <input type="text" name="href" id="signCode" placeholder="123 456" class="input-control"
+                                    required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn">
+
+                        {{!-- <button type="submit" class="btn">Signup</button> --}}
+                        <a href="">
+                            <button type="submit" class="btn">Signup</button>
+                        </a>
+
+                    </div>
+                </form>
+                <p>Don't have a code yet?<a href="" >Generate Code</a></p>
+            </div>
+        </div>
+    </section>
+    <!-- contact section end -->
+
+
+
+</div>

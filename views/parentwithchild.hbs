@@ -1,0 +1,87 @@
+<style>
+    .gridit {
+        display: grid;
+        grid-template-columns: 3fr 2fr;
+        border: 2px solid black;
+        padding: 20px 1%;
+        height: 100vh;
+    }
+
+    .picturess {
+        display: grid;
+        grid-template-columns: 1fr;
+        column-gap: 0%;
+        border: 2px solid yellow;
+        overflow-y: auto;
+        height: 90vh;
+    }
+
+    
+
+    .imgg img {
+        height: 30vh;
+        width: 30vw;
+        object-fit: contain;
+        padding: 2px;
+        border-radius: 20px;
+    }
+</style>
+
+
+
+{{#if pictures}}
+    <div class="gridit">
+        <div class="profileactions text-center align-items-center">
+            <h2>Child profile</h2>
+
+            <div class="from-side mt-5">
+                {{!-- <h2> From : </h2> --}}
+                <div>
+                    <label for=""> Name </label>
+                    <p class="text-capitalize"> {{child.name}} </p>
+                </div>
+                <div>
+                    <label for=""> Email </label>
+                    <p>{{child.email}}</p>
+                </div>
+                <div>
+                    <label for=""> Student Username </label>
+                    <p class="text-capitalize">{{child.username}}</p>
+                </div>
+            
+            
+                <div>
+                    <label for=""> Uploaded </label>
+                    <p>{{order.uploaddate}}</p>
+                </div>
+                <div>
+                    <label for=""> Student last seen </label>
+                    <p>{{child.newlogin}}</p>
+                </div>
+            
+            </div>
+
+    
+        </div>
+        <div class="picturess text-center bg-dark">
+            {{#each pictures}}
+            <div class="watermark">
+                {{!-- <p>codar</p> --}}
+                <div class="imgg">
+                    <img src={{imgdir}} alt="" class="watermark">
+                </div>
+                <a href="/parent/order/{{pixname}}">Order</a>
+            </div>
+            {{/each}}
+    
+    
+    
+        </div>
+    
+    </div>
+
+{{else}}
+
+<h2 class="text-center">No pictures yet</h2>
+{{/if}}
+

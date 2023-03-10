@@ -1,0 +1,157 @@
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-md-12 grid-margin">
+                <div class="row">
+                    <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+                        <h3 class="font-weight-bold text-capitalize text-muted">Admin</h3>
+                        <h3 class="font-weight-bold text-capitalize">Welcome {{admin.username}}</h3>
+                        <h6 class="font-weight-normal mb-0">All systems are running smoothly!</h6>
+                    </div>
+                    <div class="col-12 col-xl-4">
+                        <div class="justify-content-end d-flex">
+                            <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
+                                <button class="btn btn-sm btn-light bg-white dropdown-toggle" style="cursor: default;" type="button"
+                                    id="dropdownMenuDate2" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="true" >
+                                    <i class="mdi mdi-calendar"></i> Today <span id="usetim"></span>
+                                </button>
+                                {{!-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuDate2">
+                                    <a class="dropdown-item" href="#">January - March</a>
+                                    <a class="dropdown-item" href="#">March - June</a>
+                                    <a class="dropdown-item" href="#">June - August</a>
+                                    <a class="dropdown-item" href="#">August - November</a>
+                                </div> --}}
+                            </div>
+                        </div>
+                        <br>
+                        
+                    </div>
+                    
+                </div>
+                <br>
+                <a href="" class="btn btn-behance px-3 py-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Add School
+                </a>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Add School</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            
+                            <div class="modal-body">
+                                <form action="/admin/registerchool" method='post' class="forms-sample">
+                                    <div class="form-group">
+                                        <label for="exampleInputName1">School Name</label>
+                                        <input name="name" type="text" class="form-control" id="exampleInputName1" placeholder="Name" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputName1">School Name</label>
+                                        <input name="address" type="text" class="form-control" id="exampleInputName1"
+                                            placeholder="Address" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputName1">School Name</label>
+                                        <input name="email" type="text" class="form-control" id="exampleInputName1"
+                                            placeholder="Official email" />
+                                    </div>
+                
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Save
+                                            changes</button>
+                                    </div>
+                                </form>
+                            </div>
+                
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 grid-margin transparent">
+                <div class="row">
+                    <div class="col-md-6 mb-4 stretch-card transparent">
+                        <div class="card card-tale">
+                            <div class="card-body">
+                                <p class="mb-4">Total Schools</p>
+                                <p class="fs-30 mb-2">{{schools.length}}</p>
+                                <p class="mb-4 ml-5">{{students.length}} Student(s)</p>
+                                <p class="mb-4 ml-5">{{tl}} Teacher(s)</p>
+                                <p class="mb-4 ml-5">{{pl}} Parent(s)</p>
+
+                                <!-- <p>10.00% (30 days)</p> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4 stretch-card transparent">
+                        <div class="card card-dark-blue">
+                            <div class="card-body">
+                                <p class="mb-4">Total Photos</p>
+                                <p class="fs-30 mb-2">{{photos.length}}</p>
+                                <p class="mb-4 ml-5">{{photosp.length}} Paid Pictures(s)</p>
+                                <p class="mb-4 ml-5">{{photog}} Photographer(s)</p>
+                                {{!-- <p class="fs-10 mb- ml-auto">{{photos.length}}</p> --}}
+                                <!-- <p>22.00% (30 days)</p> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{!-- <div class="row">
+                    <div class="col-md-6 mb-4 stretch-card transparent">
+                        <div class="card card-tale">
+                            <div class="card-body">
+                                <p class="mb-4">Registered Teachers</p>
+                                <p class="fs-30 mb-2">{{tl}}</p>
+                                <!-- <p>10.00% (30 days)</p> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4 stretch-card transparent">
+                        <div class="card card-dark-blue">
+                            <div class="card-body">
+                                <p class="mb-4">Parents</p>
+                                <p class="fs-30 mb-2">{{pl}}</p>
+                                <!-- <p>22.00% (30 days)</p> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
+                        <div class="card card-light-blue">
+                            <div class="card-body">
+                                <p class="mb-4">Total Schools</p>
+                                <p class="fs-30 mb-2">{{schools.length}}</p>
+                                <!-- <p>2.00% (30 days)</p> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 stretch-card transparent">
+                        <div class="card card-light-danger">
+                            <div class="card-body">
+                                <p class="mb-4">Paid Orders</p>
+                                <p class="fs-30 mb-2">{{photosp.length}}</p>
+                                <!-- <p>0.22% (30 days)</p> -->
+                            </div>
+                        </div>
+                    </div>
+                </div> --}}
+            </div>
+        </div>
+    </div>
+    <!-- content-wrapper ends -->
+    <!-- partial:partials/_footer.html -->
+    <footer class="footer">
+        <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2023</span>
+            <!-- <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span> -->
+        </div>
+        <div class="d-sm-flex justify-content-center justify-content-sm-between">
+        </div>
+    </footer>
+    <!-- partial -->
+</div>

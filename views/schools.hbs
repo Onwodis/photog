@@ -1,0 +1,78 @@
+
+<style>
+    .decidebg div:nth-child(odd){
+        background-color: blueviolet;
+    }
+    .decidebg div:nth-child(even){
+        background-color: rgb(75, 107, 28);
+    }
+</style>
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="container mt-3 p-3 mx-3">
+            <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+                <h3 class="font-weight-bold text-capitalize text-muted">Admin</h3>
+                <h3 class="font-weight-bold text-capitalize">Welcome {{admin.username}}</h3>
+                <h6 class="font-weight-normal mb-0">All systems are running smoothly!</h6>
+            </div>
+            <br>
+            <a href="" class="btn btn-behance px-3 py-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Add School
+            </a>
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Add School</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="/admin/registerchool" method='post'class="forms-sample">
+                                <div class="form-group">
+                                    <label for="exampleInputName1">School Name</label>
+                                    <input name="name" type="text" class="form-control" id="exampleInputName1" placeholder="Name" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputName1">School Name</label>
+                                    <input name="address" type="text" class="form-control" id="exampleInputName1" placeholder="Address" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputName1">School Name</label>
+                                    <input name="email" type="text" class="form-control" id="exampleInputName1" placeholder="Official email" />
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Save
+                                        changes</button>
+                                </div>
+                            </form>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="row p-3">
+                <div
+                    class="d-flex flex-fill flex-grow-1 flex-lg-nowrap flex-wrap flex-column justify-content-around align-center align-content-center decidebg">
+                    {{#each schools}}
+                        <div class="px-4 py-3 w-100 rounded-lg text-white mt-3">
+                            <h3 class="font-weight-500 text-capitalize">{{schoolname}}</h3>
+                            <a href="/admin/getclasses/{{schoolcode}}" class="text-white text-decoration-none">{{students}} students
+                                &#8594;</a>
+                        </div>
+                    {{/each}}
+
+                    
+
+                     
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,430 @@
+<style>
+    .imgg img {
+        height: 45vh;
+        width: 60%;
+        object-fit: contain;
+        padding: 2px;
+        border-radius: 20px;
+    }
+
+    .gridit {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        border: 2px solid black;
+        padding: 20px 1%;
+        height: 100vh;
+    }
+
+    /********** Template CSS **********/
+    :root {
+        --primary: #4AC4F3;
+        --light: #EDF5FF;
+        --dark: #202942;
+    }
+
+
+    /*** Spinner ***/
+    #spinner {
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity .5s ease-out, visibility 0s linear .5s;
+        z-index: 99999;
+    }
+
+    #spinner.show {
+        transition: opacity .5s ease-out, visibility 0s linear 0s;
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .back-to-top {
+        position: fixed;
+        display: none;
+        right: 45px;
+        bottom: 45px;
+        z-index: 99;
+    }
+
+    .my-6 {
+        margin-top: 6rem;
+        margin-bottom: 6rem;
+    }
+
+    .py-6 {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+    }
+
+
+    /*** Heading ***/
+    h1,
+    h2,
+    .fw-bold {
+        font-weight: 700 !important;
+    }
+
+    h3,
+    h4,
+    .fw-semi-bold {
+        font-weight: 600 !important;
+    }
+
+    h5,
+    h6,
+    .fw-medium {
+        font-weight: 500 !important;
+    }
+
+
+    /*** Button ***/
+    .btn {
+        transition: .5s;
+    }
+
+    .btn:hover {
+        box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    }
+
+    .btn.btn-primary {
+        color: var(--light);
+    }
+
+    .btn.btn-light {
+        color: var(--primary);
+    }
+
+
+    /*** Hero Header ***/
+    .hero-header {
+        margin-bottom: 6rem;
+        padding: 9rem 0;
+        background: url(../img/bg-bottom.png) center bottom no-repeat;
+    }
+
+    @media (max-width: 991.98px) {
+        .hero-header {
+            padding: 6rem 0 9rem 0;
+        }
+    }
+
+
+    /*** Feature ***/
+    .feature-item,
+    .advanced-feature-item {
+        height: 100%;
+        transition: .5s;
+    }
+
+    .feature-item:hover {
+        margin-top: -15px;
+    }
+
+    .advanced-feature-item {
+        box-shadow: 0 0 45px rgba(0, 0, 0, .08);
+    }
+
+    .advanced-feature-item * {
+        transition: .5s;
+    }
+
+    .advanced-feature-item:hover {
+        background: var(--primary);
+    }
+
+    .advanced-feature-item:hover * {
+        color: #FFFFFF !important;
+    }
+
+
+    /*** Process ***/
+    .process {
+        padding: 0;
+        list-style: none;
+    }
+
+    .process li {
+        position: relative;
+        display: flex;
+        padding-bottom: 25px;
+    }
+
+    .process li::after {
+        position: absolute;
+        content: "";
+        width: 1px;
+        height: 100%;
+        top: 0;
+        left: 20px;
+        background: var(--primary);
+    }
+
+    .process li:last-child {
+        padding-bottom: 0;
+    }
+
+    .process li:last-child:after {
+        display: none;
+    }
+
+    .process li span {
+        position: relative;
+        width: 40px;
+        height: 40px;
+        margin-right: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        color: #FFFFFF;
+        background: var(--primary);
+        border-radius: 40px;
+        z-index: 1;
+    }
+
+    .process li p {
+        margin: 0;
+    }
+
+
+    /*** Price ***/
+    .price-item {
+        box-shadow: 0 0 45px rgba(0, 0, 0, .08);
+        transition: .5s;
+    }
+
+    .price-item:hover {
+        margin-top: -10px;
+    }
+
+
+    /*** Testimonial ***/
+    .testimonial-carousel .testimonial-item {
+        padding: 0 30px 30px 30px;
+    }
+
+    .testimonial-carousel .owl-nav {
+        display: flex;
+        justify-content: center;
+    }
+
+    .testimonial-carousel .owl-nav .owl-prev,
+    .testimonial-carousel .owl-nav .owl-next {
+        margin: 0 12px;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary);
+        background: var(--light);
+        border-radius: 60px;
+        font-size: 22px;
+        transition: .5s;
+    }
+
+    .testimonial-carousel .owl-nav .owl-prev:hover,
+    .testimonial-carousel .owl-nav .owl-next:hover {
+        color: #FFFFFF;
+        background: var(--primary);
+        box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    }
+
+
+    /*** Footer ***/
+    .footer {
+        margin-top: 6rem;
+        padding-top: 3rem;
+    }
+
+
+    .def {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+</style>
+
+<div class="gridit">
+    {{#if order}}
+    <div class="pix">
+        <div class="imgg align-items-center text-center">
+            <img src={{order.imgdir}} class="wmw" alt="" >
+            <h3 class="text-center text-capitalize">{{order.pixname}}</h3>
+
+        </div>
+    </div>
+
+    {{/if}}
+    <div>
+        <form action="/create-invoice" method="post" enctype="multipart/form-data">
+            <div class="invoice-div">
+
+
+
+                <div class="part-2 def">
+
+                    <div class="from-side">
+                        <h2> From : </h2>
+                        <div>
+                            <label for=""> Name </label>
+                            <p class="text-capitalize"> {{child.name}} </p>
+                        </div>
+                        <div>
+                            <label for=""> Email </label>
+                            <p>{{child.email}}</p>
+                        </div>
+                        <div>
+                            <label for=""> Student Username </label>
+                            <p class="text-capitalize">{{child.username}}</p>
+                        </div>
+
+
+                        <div>
+                            <label for=""> Uploaded </label>
+                            <p>{{order.uploaddate}}</p>
+                        </div>
+                        <div>
+                            <label for=""> Student last seen </label>
+                            <p>{{child.newlogin}}</p>
+                        </div>
+
+                    </div>
+
+                    <div class="to-side">
+                        <h2> To : </h2>
+                        <div>
+                            <label for=""> Name </label>
+                            <p class="text-capitalize">{{parent.name}}</p>
+                        </div>
+                        <div>
+                            <label for=""> Email </label>
+                            <p>{{parent.email}}</p>
+                        </div>
+                        <div>
+                            <label for=""> Parent username </label>
+                            <p class="text-capitalize">{{parent.username}}</p>
+                        </div>
+
+
+
+
+
+                    </div>
+
+                </div>
+
+
+
+            </div>
+            <div class="part-1 mx-auto mt-4">
+                {{!-- <div class="inv-num">
+                    <h1>{{child.schoolcode}}
+
+                    </h1>
+                </div>
+                <div class="logo-box">
+                    <h1> Status : {{child.activeStatus}} </h1>
+                </div> --}}
+
+                <form>
+                    <script src="https://js.paystack.co/v1/inline.js">
+                    </script>
+
+                    <button type="button" onclick="payWithPaystack()"
+                        style="width: 145px; height: 50px; background-color: #4AC4F3; color: white; border-radius: 30px; font-size:large; border-style: none; display:flex; align-items:center; justify-content:center; cursor:pointer;">
+
+                        Pay Now
+
+                    </button>
+                </form>
+
+
+                {{!-- Below the PayStack Form --}}
+
+                <script>
+                    function payWithPaystack() {
+                        var handler = PaystackPop.setup({
+                            key: 'pk_test_6c850a2674289b748494bc530ac732bcddc31e1f',
+                            email: 'shugadavid@gmail.com',
+                            amount: 100000,
+                            ref: '8974392kjhfke',
+                            metadata: {
+                                custom_fields: [
+                                    {
+                                        display_name: "Mobile Number",
+                                        variable_name: "mobile_number",
+                                        value: "+2347035334249"
+                                    }
+                                ]
+                            },
+                            callback: function (response) {
+                                alert('success. transaction ref is ' + response.reference);
+                            },
+                            onClose: function () {
+                                alert('window closed');
+                            }
+                        });
+                        handler.openIframe();
+                    }
+                </script>
+
+
+            </div>
+
+        </form>
+
+
+
+        {{!-- <form id="paymentForm">
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email-address" required />
+            </div>
+            <div class="form-group">
+                <label for="amount">Amount</label>
+                <input type="tel" id="amount" required />
+            </div>
+            <div class="form-group">
+                <label for="first-name">First Name</label>
+                <input type="text" id="first-name" />
+            </div>
+            <div class="form-group">
+                <label for="last-name">Last Name</label>
+                <input type="text" id="last-name" />
+            </div>
+            <div class="form-submit">
+                <button type="submit" onclick="payWithPaystack()"> Pay </button>
+            </div>
+        </form> --}}
+    </div>
+</div>
+
+<script src="https://js.paystack.co/v1/inline.js"></script>
+
+{{!-- Below the PayStack Form --}}
+
+<script>
+    function payWithPaystack() {
+        var handler = PaystackPop.setup({
+            key: 'pk_test_6c850a2674289b748494bc530ac732bcddc31e1f',
+            email: 'shugadavid@gmail.com',
+            amount: 100000,
+            ref: '8974392kjhfke',
+            metadata: {
+                custom_fields: [
+                    {
+                        display_name: "Mobile Number",
+                        variable_name: "mobile_number",
+                        value: "+2347035334249"
+                    }
+                ]
+            },
+            callback: function (response) {
+                alert('success. transaction ref is ' + response.reference);
+            },
+            onClose: function () {
+                alert('window closed');
+            }
+        });
+        handler.openIframe();
+    }
+</script>

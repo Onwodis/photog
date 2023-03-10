@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/fonts (2).css" />
+    <link rel="stylesheet" href="./css/fonts.css" />
+    <link rel="stylesheet" href="./css/icomoon/style.css" />
+    <link rel="stylesheet" href="./css/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/css/bootstrap.rtl.min.css" />
+    <link rel="stylesheet" href="./css/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="./css/style (4).css" />
+    <link rel="stylesheet" href="./css/normalize.min.css" />
+
+    <script src="./js/jquery-1.11.0.min.js"></script>
+    <script src="./js/jquery.nav.js"></script>
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <header>
+            <div class="containers">
+                <div class="logo">
+                    <!-- <h1>PH<span><img src="./images/logo.png" alt=""></span>TO<span class="photo-g">G</span></h1> -->
+                    <a href="./index.html">
+                        <img src="./images/Screenshot 2023-03-01 021642.png" alt="" />
+                    </a>
+                </div>
+                <nav>
+                    <input type="checkbox" name="" class="show-none" id="show-burger" />
+                    <ul>
+                        <label for="show-burger">
+                            <i class="icon-close style-close" id="closebtn"></i>
+                        </label>
+                        <li><a href="./service.html">Services</a></li>
+                        <li><a href="./about.html">About Us</a></li>
+                        <li><a href="./contact.html">Contact Us</a></li>
+                        <li><a href="./faqs.html">FAQs</a></li>
+                    </ul>
+                </nav>
+                <div class="account">
+                    <a href="">
+                        <img src="./images/faces/face1.jpg" alt="">
+                        <i class="icon-arrow_drop_down"></i>
+                    </a>
+                </div>
+                <div class="login">
+                    <a href="./login.html">
+                        <button>Login</button>
+                    </a>
+                </div>
+                <label for="show-burger">
+                    <i class="icon-bars" id="closebtn"></i>
+                </label>
+            </div>
+        </header>
+
+
+        <div class="summary-section">
+            <nav aria-label="Page navigation example" class="seperator" id="seperator">
+                <ul class="d-flex justify-content-center">
+                    <li class="page-item" id="linkSummary">
+                        <a class="page-link active" href="#">Order Summary</a>
+                    </li>
+                    <li class="page-item" id="linkDetails">
+                        <a class="page-link" href="#">Personal Details</a>
+                    </li>
+                    <li class="page-item" id="linkShipping">
+                        <a class="page-link" href="#">Shipping Details</a>
+                    </li>
+                    <li class="page-item" id="linkConfirm">
+                        <a class="page-link" href="#">Confirmation Details</a>
+                    </li>
+                    <li class="page-item" id="linkPayment">
+                        <a class="page-link" href="#">Payment Details</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <section class="" id="order-summary-section">
+            <div class="container" id="">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="qty">
+                            <h3>Qty</h3>
+                            <p>2</p>
+                            <p>1</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="photo-name">
+                            <h3>Photo Name</h3>
+                            <p>Sarah's Class Photo</p>
+                            <p>Sarah's Individual Photo</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="price">
+                            <h3>Price</h3>
+                            <p>$8.00</p>
+                            <p>$4.00</p>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <p>Total</p>
+                        </div>
+                        <div class="col-lg-3">
+                            <p>$12.00</p>
+                        </div>
+                    </div>
+                    <hr />
+                </div>
+                <div class="payment-details">
+                    <h1>Payment Details</h1>
+                    <p>Complete your payment by providing your payment details below</p>
+                    <div class="payment-plan">
+                        <span>
+                            <input type="radio" name="" id="" />
+                            Credit Card
+                        </span>
+                        <span>
+                            <input type="radio" name="" id="" />
+                            <img src="./images/amazon-logo-removebg-preview.png" alt="" />
+                            <img src="./images/dropbox-logo1.png" alt="" />
+                        </span>
+                        <span>
+                            <input type="radio" name="" id="" />
+                            <img src="./images/amazon-logo-removebg-preview.png" alt="" />
+                            <img src="./images/dropbox-logo1.png" alt="" />
+                        </span>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <form action="">
+                        <div class="input-bottom" id="name">
+                            <p>FullName *</p>
+                            <input type="text" name="" id="" placeholder="e.g Michael Williams" class="input-control"
+                                required />
+                        </div>
+                        <div class="input-bottom">
+                            <p>Card Number *</p>
+                            <input type="text" name="" id="" placeholder="e.g 10/26" class="input-control" required />
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-bottom">
+                                    <p>Expiration Date (MM/YY) *</p>
+                                    <input type="text" name="" id="" placeholder="e.g 10/26" class="input-control"
+                                        required />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-bottom">
+                                    <p>CV/CVV *</p>
+                                    <input type="text" name="" id="" placeholder="e.g 10/26" class="input-control"
+                                        required />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="btn">
+                        <a href="">
+                            <button>Submit</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="shipping-section form--hidden" id="shipping-section">
+            <div class="container" id="">
+                <div class="ship-heading">
+                    <h1>
+                        Shipping Details
+                    </h1>
+                </div>
+                <div class="contact-form">
+                    <form action="">
+                        <div class="input-bottom">
+                            <p>Country *</p>
+                            <select name="" id="">
+                                <option value="+1">🏳️ Nigeria</option>
+                                <option value="+234">🏳️ Ghana</option>
+                                <option value="+93">🏳️ South Africa</option>
+                                <option value="+54">🏳️ Kenya</option>
+                                <option value="+61">🏳️ Togo</option>
+                            </select>
+                            <!-- <input type="text" name="" id="number" placeholder="" class="input-control"> -->
+                            <h6>Choose from the list below</h6>
+                        </div>
+                        <div class="input-bottom">
+                            <p>Country *</p>
+                            <select name="" id="">
+                                <option value="">Lagos</option>
+                                <option value="">Abia</option>
+                                <option value="">Adamawa</option>
+                                <option value="">Akwa Ibom</option>
+                                <option value="">Anambra</option>
+                                <option value="">Bauchi</option>
+                                <option value="">Bayelsa</option>
+                                <option value="">Benue</option>
+                                <option value="">Borno</option>
+                                <option value="">Crossriver</option>
+                                <option value="">Delta</option>
+                                <option value="">Edo</option>
+                                <option value="">Ekiti</option>
+                                <option value="">Gombe</option>
+                                <option value="">DATA ANALYST</option>
+                            </select>
+                            <!-- <input type="text" name="" id="number" placeholder="" class="input-control"> -->
+                            <h6>Choose from the list below</h6>
+                        </div>
+                        <div class="input-bottom">
+                            <p>Address *</p>
+                            <input type="text" name="" id=""
+                                placeholder="N0, 8 Matthew Close, Sobo Bus-stop, Alimosho Lagos" class="input-control"
+                                required />
+                        </div>
+                        <div class="input-bottom">
+                            <p>Email Address *</p>
+                            <input type="text" name="" id="" placeholder="example@gmail.com" class="input-control"
+                                required />
+                        </div>
+                        <div class="input-bottom">
+                            <p>Phone Number *</p>
+                            <input type="text" name="" id="" placeholder="070 333 444 555" class="input-control"
+                                required />
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-bottom">
+                                    <p>Postal Code *</p>
+                                    <input type="text" name="" id="" placeholder="123456" class="input-control"
+                                        required />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-bottom">
+                                    <p>Country *</p>
+                                    <select name="" id="">
+                                        <option value="">Home</option>
+                                        <option value="">🏳️</option>
+                                        <option value="">🏳️</option>
+                                        <option value="">🏳️</option>
+                                        <option value="">🏳️</option>
+                                    </select>
+                                    <!-- <input type="text" name="" id="number" placeholder="Home" class="input-control"> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-bottom">
+                            <div class="shipping-heading">
+                                <h1>Available Shipping Method</h1>
+                            </div>
+                            <h6>Choose from the list below</h6>
+                            <select name="" id="">
+                                <option value="">delivery:1-3 working days</option>
+                                <option value="">delivery:4-7 working days</option>
+                                <option value="">delivery:3-6 working days</option>
+                                <option value="">delivery:1-3 working days</option>
+                                <option value="">delivery:3-6 working days</option>
+                                <option value="">delivery:1-3 working days</option>
+                                <option value="">delivery:4-7 working days</option>
+                                <option value="">delivery:4-7 working days</option>
+                                <option value="">delivery:3-6 working days</option>
+                                <option value="">delivery:1-3 working days</option>
+                            </select>
+                            <!-- <input type="text" name="" id="number" placeholder="delivery:1-3 days" class="input-control"> -->
+                        </div>
+                    </form>
+                    <div class="btn">
+                        <a href="">
+                            <button>Submit</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="confirm-details form--hidden" id="confirm-details">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-11">
+                        <div class="personal-details">
+                            <h1>Personal Details:</h1>
+                            <div class="email d-flex">
+                                <h3>Email Address:</h3>
+                                <p>example@gmail.com</p>
+                            </div>
+                            <div class="email d-flex">
+                                <h3>Phone Number:</h3>
+                                <p>070 333 444 55</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-1 edit">
+                        <a href="">
+                            <i class="icon-edit"></i>
+                        </a>
+                    </div>
+                    <hr>
+
+                    <div class="col-lg-11">
+                        <div class="personal-details">
+                            <h1>Shipping Details:</h1>
+                            <div class="email d-flex">
+                                <h3>Address:</h3>
+                                <p>N0, 8 Matthew Close, Sobo Bus-stop, Alimosho Lagos</p>
+                            </div>
+                            <div class="email d-flex">
+                                <h3>Postal Code:</h3>
+                                <p>123456</p>
+                            </div>
+                            <div class="email d-flex">
+                                <h3>Addrss Type:</h3>
+                                <p>Home</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-1 edit">
+                        <a href="">
+                            <i class="icon-edit"></i>
+                        </a>
+                    </div>
+                    <hr>
+
+                    <div class="col-lg-11">
+                        <div class="personal-details">
+                            <h1>Payment Details:</h1>
+                            <div class="email d-flex">
+                                <h3>Payment Method:</h3>
+                                <p>Pay with VISA</p>
+                            </div>
+                            <div class="email d-flex">
+                                <h3>Credit Card:</h3>
+                                <p>**** **** **** **** 8890</p>
+                            </div>
+                            <div class="email d-flex">
+                                <input type="checkbox" name="" id="" class="show-burger">
+                                <p>I accept terms and conditions of PhotoG <a href="">Terms and Conditions</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-1 edit">
+                        <a href="">
+                            <i class="icon-edit"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="btn">
+                    <a href="">
+                        <button>Submit</button>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="payment-details-section form--hidden" id="payment-details-section">
+            <div class="container">
+                <div class="row">
+                    <div class="payment-details">
+                        <h1>Payment Details</h1>
+                        <p>Complete your payment by providing your payment details below</p>
+                        <div class="payment-plan">
+                            <span>
+                                <input type="radio" name="" id="" />
+                                Credit Card
+                            </span>
+                            <span>
+                                <input type="radio" name="" id="" />
+                                <img src="./images/amazon-logo-removebg-preview.png" alt="" />
+                                <img src="./images/dropbox-logo1.png" alt="" />
+                            </span>
+                            <span>
+                                <input type="radio" name="" id="" />
+                                <img src="./images/amazon-logo-removebg-preview.png" alt="" />
+                                <img src="./images/dropbox-logo1.png" alt="" />
+                            </span>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <form action="">
+                            <div class="input-bottom" id="name">
+                                <p>FullName *</p>
+                                <input type="text" name="" id="" placeholder="e.g Michael Williams"
+                                    class="input-control" required />
+                            </div>
+                            <div class="input-bottom">
+                                <p>Card Number *</p>
+                                <input type="text" name="" id="" placeholder="e.g 10/26" class="input-control"
+                                    required />
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="input-bottom">
+                                        <p>Expiration Date (MM/YY) *</p>
+                                        <input type="text" name="" id="" placeholder="e.g 10/26" class="input-control"
+                                            required />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="input-bottom">
+                                        <p>CV/CVV *</p>
+                                        <input type="text" name="" id="" placeholder="e.g 10/26" class="input-control"
+                                            required />
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="btn">
+                            <a href="">
+                                <button>Submit</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </div>
+
+    <!-- <script src="./js/script.js"></script> -->
+    <script src="./js/custom.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="./js/swiper-bundle.min.js"></script>
+    <script src="./js/script (2).js"></script>
+</body>
+
+</html>

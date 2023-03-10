@@ -1,0 +1,109 @@
+<div class="margin"
+    style="margin: 0 auto;display:flex;justify-content:center;flex-direction:column;align-items:center;">
+
+
+
+    {{#if photographer}}
+    <small>Photographer {{photographer.username}}</small>
+
+    <div>
+        <h1 style="text-transform: capitalize;">welcome {{photographer.username}}</h1>
+    </div>
+
+
+    <br>
+    <br>
+    <br>
+            {{#if students}}
+
+            <div>
+                <form action='/photographer/uploadpicture' method="post" enctype="multipart/form-data">
+                    <input type="file" name="pic" id="sdfghj" accept="image/jpg,image/gif,image/png" required>
+                    <br>
+
+                    <br>
+                    {{!-- <input type="text" name="studentname" id=""> --}}
+                    <select name="studentname" id="" required>
+                        <option value="" disabled selected>Select student</option>
+                        {{#each students}}
+
+                        <option value={{username}} style="text-transform: capitalize;" title={{class}}>{{name}}</option>
+
+                        {{/each}}
+
+                    </select>
+
+                    
+                    <button type="submit">submit</button>
+                </form>
+            </div>
+            {{else }}
+
+                <h4>Students from {{photographer.schoolname}} are yet to register</h4>
+            {{/if}}
+    {{else}}
+
+    {{#if parent}}
+
+    <div>
+        <h1>welcome parent {{parent.username}}</h1>
+    </div>
+
+    <form action="/parent/enterchildusername" method="post">
+        <input type="text" placeholder="Enter Child username" name="username">
+        <button type="submit">Submit</button>
+    </form>
+
+    <br>
+    <br>
+    <br>
+
+
+    {{else}}
+
+    {{#if teacher}}
+
+    <div>
+        <h1>welcome teacher {{teacher.username}}</h1>
+    </div>
+
+
+    <br>
+    <br>
+    <br>
+
+
+    {{else}}
+
+    {{#if student}}
+
+    <div>
+        <h1>welcome {{student.username}}</h1>
+    </div>
+
+
+    <br>
+    <br>
+    <br>
+
+
+
+
+    {{/if}}
+
+    {{/if}}
+
+    {{/if}}
+
+    {{/if}}
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+</div>

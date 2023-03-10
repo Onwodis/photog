@@ -1,0 +1,20 @@
+USER_NAME =LION
+NODE_ENVIRONMENT = development
+PASS = ''
+PORTs = PORT
+MONGOOSEGUY=""
+
+
+PUSER = ''
+SECRET = "michaeljacksonisthekingofpop"
+signupverificationhbspage="vpin"  
+# signupverificationpage is vpin
+websitename= "snapit"
+
+
+"express-session": "^1.17.3",
+"git": "^0.1.5",
+
+
+
+

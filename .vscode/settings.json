@@ -1,0 +1,10 @@
+{
+  "liveServer.settings.port": 5502,
+  "git.allowForcePush": true,
+  "git.enabled": true,
+  "git.path": "C:\\path\\to\\git.exe",
+  "git.alwaysShowStagedChangesResourceGroup": true,
+  "gitProjectManager.ignoredFolders": [
+  
+  ]
+}
