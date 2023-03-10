@@ -7,7 +7,7 @@ const studentControllers = require('../controllers/studentControllers');
 const studentprg = require('../prgs/studentprg');
 // const { checkUser } = require('../middleware/setUser');
 const {vpin,authstudent}= require('../middleWare/studentmw')
-const { checkUser } = require('../middleware/setUser');
+// const { checkUser } = require('../middleware/setUser');
 
 
 
