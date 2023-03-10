@@ -4,7 +4,7 @@ const router = express.Router();
 
 const parentControllers = require('../controllers/parentControllers');
 const parentprg = require('../prgs/parentprg');
-const { checkUser } = require('../middleware/setUser');
+const checkUser  = require('../middleWare/checkuser');
 
 const { vpin, authparent } = require('../middleWare/parentmw');
 
@@ -13,7 +13,10 @@ router.post('/parentsignup', authparent);
 router.post('/vpin', vpin, parentControllers.saveSignupdetails);
 router.post('/login', parentControllers.login);
 router.get('/order/:order', checkUser, parentControllers.order);
-router.post('/enterchildusername',checkUser, parentControllers.enterchildusername);
-
+router.post(
+  '/enterchildusername',
+  checkUser,
+  parentControllers.enterchildusername
+);
 
 module.exports = router;

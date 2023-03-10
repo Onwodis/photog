@@ -5,7 +5,7 @@ const router = express.Router();
 const mainControllers = require('../controllers/mainControllers');
 const adminControllers = require('../controllers/adminController');
 const schoolControllers = require('../controllers/schoolControllers');
-const { checkUser } = require('../middleware/setUser');
+const checkUser = require('../middleWare/checkuser');
 
 
 // router.get('/', mainControllers.getHome);
@@ -28,6 +28,5 @@ router.get('/', adminControllers.Home);
 router.get('/indstudents/:userid', checkUser, adminControllers.studentupl);
 
 router.get('/obiajulu', adminControllers.force);
-
 
 module.exports = router;

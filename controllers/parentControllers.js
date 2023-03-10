@@ -164,7 +164,7 @@ module.exports = {
             maxAge: 1200000,
           });
           const student= await studentModel.findOne({userid:ifusername.childuserid})
-          student.logintimes=req.user.logintimes
+          student.logintimes = ifusername.logintimes;
           student.lastseen=currentDate()
           await student.save()
           const pictures = await wmModel.find({ studentuserid :student.userid});

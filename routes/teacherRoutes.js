@@ -4,13 +4,12 @@ const router = express.Router();
 
 const teacherControllers = require('../controllers/teacherControllers');
 const teacherprg = require('../prgs/teacherprg');
-const { checkUser } = require('../middleware/setUser');
+const { checkUser } = require('../middleWare/checkuser');
 const { vpin, authteacher } = require('../middleWare/teachermw');
 
 // router.get('/prg', teacherprg.signup);
 // router.post('/teachersignup', authteacher);
 // router.post('/vpin', vpin, teacherControllers.saveSignupdetails);
 // router.post('/login', teacherControllers.login);
-
 
 module.exports = router;
