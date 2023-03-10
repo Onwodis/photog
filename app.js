@@ -12,7 +12,7 @@ const dotenvb = require('dotenv').config()
 const fileUpload = require('express-fileupload');
 const pdf = require('html-pdf');
 const homeRoutes = require('./routes/homeRoutes')
-const studentRoutes = require('./routes/studentRoutes')
+// const studentRoutes = require('./routes/studentRoutes')
 const adminRoutes = require('./routes/adminRoutes')
 const parentRoutes = require('./routes/parentRoutes')
 // const photographerRoutes = require('./routes/photographerRoutes')
@@ -66,7 +66,7 @@ app.use(
 
 
 app.use('/',homeRoutes)
-app.use('/student', studentRoutes);
+// app.use('/student', studentRoutes);
 app.use('/admin', adminRoutes);
 app.use('/parent', parentRoutes);
 // app.use('/teacher', teacherRoutes);
