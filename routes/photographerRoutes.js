@@ -9,7 +9,7 @@ const { vpin, authphotographer } = require('../middleWare/photographermw');
 
 router.get('/',checkUser, photographerControllers.photographerhome);
 router.get('/prg', photographerprg.signup);
-router.post('/photographersignup', authphotographer);
+// router.post('/photographersignup', authphotographer);
 router.post('/vpin', vpin, photographerControllers.saveSignupdetails);
 router.post('/login', photographerControllers.login);
 router.post('/uploadpicture', checkUser, photographerControllers.uploadpicture);
