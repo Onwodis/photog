@@ -35,11 +35,11 @@
                                     <input name="name" type="text" class="form-control" id="exampleInputName1" placeholder="Name" />
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputName1">School Name</label>
+                                    <label for="exampleInputName1">Address</label>
                                     <input name="address" type="text" class="form-control" id="exampleInputName1" placeholder="Address" />
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputName1">School Name</label>
+                                    <label for="exampleInputName1">Email</label>
                                     <input name="email" type="text" class="form-control" id="exampleInputName1" placeholder="Official email" />
                                 </div>
 
@@ -54,25 +54,29 @@
                     </div>
                 </div>
             </div>
-            <div class="row p-3">
-                <div
-                    class="d-flex flex-fill flex-grow-1 flex-lg-nowrap flex-wrap flex-column justify-content-around align-center align-content-center decidebg">
-                    {{#each schools}}
+            {{#if schools}}
+                <div class="row p-3">
+                    <div
+                        class="d-flex flex-fill flex-grow-1 flex-lg-nowrap flex-wrap flex-column justify-content-around align-center align-content-center decidebg">
+                        {{#each schools}}
                         <div class="px-4 py-3 w-100 rounded-lg text-white mt-3">
                             <h3 class="font-weight-500 text-capitalize">{{schoolname}}</h3>
                             <a href="/admin/getclasses/{{schoolcode}}" class="text-white text-decoration-none">{{students}} students
                                 &#8594;</a>
                         </div>
-                    {{/each}}
-
+                        {{/each}}
+                
+                
+                
                     
-
-                     
-
-
-
+                
+                
+                
+                    </div>
                 </div>
-            </div>
+            {{else}}
+                <h4 class="text-muted text-center">No schools yet !</h4>
+            {{/if}}
         </div>
     </div>
 </div>

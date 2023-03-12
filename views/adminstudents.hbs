@@ -23,19 +23,19 @@
                                     </div>
                                     <div class="modal-body">
                                         <form action="/admin/addstudent" class="forms-sample" enctype="multipart/form-data" method="post">
-                                            <div class="form-group">
+                                            {{!-- <div class="form-group">
                                                 <label for="imgg">Student Image</label> <br>
                                                 <input type="file" name="pix" id="imgg" accept="image/jpg,image/jpeg,image/gif,image/png,image/svg">
-                                            </div>
+                                            </div> --}}
                                             <div class="form-group">
                                                 <label for="exampleInputName1">Student Name</label>
                                                 <input type="text" class="form-control" name="names" id="exampleInputName1" placeholder="Name" />
                                             </div>
                         
-                                            <div class="form-group">
+                                            {{!-- <div class="form-group">
                                                 <label for="age">Student Age</label>
                                                 <input type="number" class="form-control" id="age" placeholder="Age" name="age" />
-                                            </div>
+                                            </div> --}}
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                                 <button type="submit" class="btn btn-primary">Add Student</button>
@@ -57,11 +57,12 @@
                                     <table class="table table-striped">
                                         <thead>
                                             <tr>
-                                                <th>Student Image</th>
+                                                {{!-- <th>Orders</th> --}}
                                                 <th>Full Name</th>
                                                 <th>Class</th>
-                                                <th>Age</th>
+                                                <th>Prescence</th>
                                                 <th>Last seen</th>
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -70,12 +71,12 @@
                                             
                                                 
                                                 <tr>
-                                                        <td class="py-1">
+                                                        {{!-- <td class="py-1">
                                                             <img src={{profileimage}} alt="image" />
-                                                        </td>
+                                                        </td> --}}
                                                         <td>
                                                             <a href="/admin/indstudents/{{userid}}" style="width: 100%;text-align:start;"
-                                                                class="bgh px-4 py-3 w-100  text-dark  rounded-lg mt-3 text-capitalize">
+                                                                class="bgh py-3 w-100  text-dark  rounded-lg mt-3 text-capitalize">
 
                                                                 {{name}}
                                                             
@@ -85,7 +86,7 @@
                                                         </td>
                                                         <td>
                                                             <a href="/admin/indstudents/{{userid}}" style="width: 100%;"
-                                                                class=" px-4 py-3 w-100 rounded-lg mt-3  text-dark text-capitalize">
+                                                                class="  py-3 w-100 rounded-lg mt-3  text-dark text-capitalize">
                                                             
                                                                 {{classs}}
                                                             
@@ -94,8 +95,9 @@
                                                             
                                                             
                                                         </td>
-                                                        <td>{{age}}</td>
+                                                        <td>{{logintimes}}</td>
                                                         <td>{{lastseen}}</td>
+                                                        <td ><a style="font-family: cursive;color:red;" href="/admin/delete/{{userid}}">Delete</a></td>
 
                                                     </tr>
                                             

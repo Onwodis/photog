@@ -33,6 +33,117 @@
     <link rel="stylesheet" href="/css/style (5).css">
 </head>
 
+<style>
+    
+
+.multiple-uploader {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 15px;
+    border: 2px dashed #858585;
+    min-height: 150px;
+    margin: 20px auto;
+    cursor: pointer;
+    width: 80%;
+}
+
+.mup-msg {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.mup-msg span {
+    margin-bottom: 10px;
+}
+
+.mup-msg .mup-main-msg {
+    color: #606060;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.mup-msg .mup-msg {
+    color: #737373;
+}
+
+.image-container{
+    margin: 1rem;
+    width: 120px;
+    height: 120px;
+    position: relative;
+    cursor: auto;
+    pointer-events: unset;
+}
+
+.image-container:before {
+    z-index: 3;
+    content: "\2716";
+    align-content: center;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 22px;
+    color: white;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #e50000;
+    pointer-events: all;
+    cursor: pointer;
+}
+
+.image-preview {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 12px;
+}
+
+.image-size {
+    position: absolute;
+    z-index: 1;
+    height: 120px;
+    width: 120px;
+    backdrop-filter: blur(4px);
+    font-weight: bolder;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    opacity: 0;
+    pointer-events: unset;
+}
+
+.image-size:hover {
+    opacity: 1;
+}
+
+.exceeded-size
+{
+    position: absolute;
+    z-index: 2;
+    height: 120px;
+    width: 120px;
+    display: flex;
+    font-weight: bold;
+    font-size: 12px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    color: white;
+    background: rgba(255, 0, 0, 0.6);
+    pointer-events: unset;
+}
+
+</style>
+
 <body>
     
     <div class="container-scroller">
@@ -276,115 +387,45 @@
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="//">
+                        <a class="nav-link" href="/admin">
                             <i class="icon-grid menu-icon"></i>
                             <span class="menu-title">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">
+                            <i class="icon-grid menu-icon"></i>
+                            <span class="menu-title">Pictures</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
                             aria-controls="ui-basic">
                             <i class="icon-layout menu-icon"></i>
-                            <span class="menu-title">Students</span>
+                            <span class="menu-title fa fas-arrow-left">Go back to</span>
                             <i class="menu-arrow"></i>
                         </a>
                         <div class="collapse" id="ui-basic">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/pages/student_class/classes.html">Classes</a>
+                                    <a class="nav-link" href="/admin/getstudents/{{student.classid}}"><i class="fa fa-arrow-left"></i>Class</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="javascript:void(0)">All students</a>
+                                    <a class="nav-link text-capitalize" href="/admin/getclasses/{{student.schoolcode}}">School</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-capitalize" href="/admin">All Schools</a>
                                 </li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false"
-                            aria-controls="form-elements">
-                            <i class="icon-columns menu-icon"></i>
-                            <span class="menu-title">Checkout</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                        <div class="collapse" id="form-elements">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="pages/checkout_page/checkout.html">checkout page</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-    
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false"
-                            aria-controls="tables">
-                            <i class="icon-grid-2 menu-icon"></i>
-                            <span class="menu-title">Bulk Images</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                        <div class="collapse" id="tables">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="pages/tables/basic-table.html">upload for kids</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="pages/tables/basic-table.html">upload for class</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="pages/tables/basic-table.html">upload for school</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-                            <i class="icon-head menu-icon"></i>
-                            <span class="menu-title">User Pages</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                        <div class="collapse" id="auth">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="pages/samples/login.html">
-                                        Login
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="pages/samples/register.html">
-                                        Register
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#error" aria-expanded="false"
-                            aria-controls="error">
-                            <i class="icon-ban menu-icon"></i>
-                            <span class="menu-title">Error pages</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                        <div class="collapse" id="error">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="pages/samples/error-404.html">
-                                        404
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="pages/samples/error-500.html">
-                                        500
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/pages/documentation/documentation.html">
-                            <i class="icon-paper menu-icon"></i>
-                            <span class="menu-title">Documentation</span>
+                        <a class="nav-link" href="/">
+                            <i class="icon-grid menu-icon"></i>
+                            <span class="menu-title">More Details</span>
                         </a>
                     </li>
+                    
                 </ul>
             </nav>
             {{{body}}}
@@ -473,7 +514,7 @@
     <script src="/vendors/chart.js/Chart.min.js"></script>
     <script src="/vendors/datatables.net/jquery.dataTables.js"></script>
     <script src="/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
-    <script src="/js/dataTables.select.min.js"></script>
+    {{!-- <script src="/js/dataTables.select.min.js"></script> --}}
 
 
     <!-- End plugin js for this page -->
@@ -507,6 +548,18 @@
     </script>
 
     <script src="/js/todolist.js"></script>
+    <script src="/js/multiple-uploader.js"></script>
+    <script src="/js/util.js"></script>
+    <script>
+
+        let multipleUploader = new MultipleUploader('#multiple-uploader').init({
+            maxUpload: 20, // maximum number of uploaded images
+            maxSize: 20, // in size in mb
+            filesInpName: 'imagine', // input name sent to backend
+            formSelector: '#exo', // form selector
+        });
+
+    </script>
     <script>
 
 
@@ -536,7 +589,10 @@
             alert("copied " + ccopy + " to clipboard")
 
         }
+
+        
     </script>
+   
     <script src="/js/main.js"></script>
 </body>
 

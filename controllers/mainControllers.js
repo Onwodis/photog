@@ -27,6 +27,10 @@ module.exports = {
     res.render('signuppage');
     // console.log(req.user + "req.user");
   },
+  adminloginpage: async (req, res) => {
+    res.render('adminloginpage');
+    // console.log(req.user + "req.user");
+  },
   loginpage: async (req, res) => {
     res.render('login');
     // console.log(req.user + "req.user");
@@ -74,31 +78,6 @@ module.exports = {
       });
     }
   },
-  loginwho: async (req, res) => {
-    console.log('its loginwho');
-
-    const iam = req.body.iam;
-    if (iam == 'admin') {
-      console.log('its admin');
-      res.redirect(307, '/admin/login');
-    } else if (iam == 'student') {
-      res.redirect(307, '/student/login');
-    } else if (iam == 'parent') {
-      res.redirect(307, '/parent/login');
-    } else if (iam == 'teacher') {
-      res.redirect(307, '/teacher/login');
-    } else if (iam == 'photographer') {
-      res.redirect(307, '/photographer/login');
-    } else {
-      console.log('line 83');
-      res.render('home', {
-        title: 'PhotoG !',
-        icon: 'error',
-        alerte: 'Something went wrong !!',
-      });
-    }
-  },
-  //homepages
   service: async (req, res) => {
     res.render('service');
   },

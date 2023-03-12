@@ -22,7 +22,7 @@ let options = {
   dstPath: './watermarked/',
 };
 const sharp = require('sharp');
-
+let fl=0
 function capitalise(x) {
   var b = x.charAt(0).toUpperCase() + x.slice(1);
   return b;
@@ -103,51 +103,55 @@ module.exports = {
     let fileDir = './public/uploads/';
 
     if (req.files) {
-      const file = req.files.imga;
-      // console.log(file )
-
-      const fileName = file.name.split(' ').join('_');
-      await file.mv(fileDir + fileName, (err) => {
-        if (err) throw err;
-      });
-
-      const iffile = await pictureModel.findOne({ pixname: fileName });
-      if (!iffile) {
+      const files = req.files.imagine;
+      console.log(files + ' is image length');
+      if(files.length >1){
         try {
-          await pictureModel.deleteOne({ pixname: fileName });
-          addTextOnImage(`public/uploads/${fileName}`, fileName);
-          await pictureModel.create({
-            pixname: fileName,
-            for: student.name,
-            uploadedby: 'admin',
-            schoolname: student.schoolname,
-            schoolcode: student.schoolcode,
-            class: student.classs,
-            uploaddate: currentDate(),
-            wm: `/wm/${fileName}`,
-            // sn: pictureslength + 1,
-            downloadtimes: 0,
-            studentuserid: student.userid,
-            imgdir: `/uploads/${fileName}`,
-          });
-          await wmModel.create({
-            pixname: fileName,
-            for: student.name,
-            uploadedby: 'admin',
-            schoolname: student.schoolname,
-            schoolcode: student.schoolcode,
-            class: student.classs,
-            uploaddate: currentDate(),
-            wm: `/wm/${fileName}`,
-            // sn: pictureslength + 1,
-            downloadtimes: 0,
-            studentuserid: student.userid,
-            imgdir: `/uploads/${fileName}`,
-          });
+          for (let i = 0; i < files.length; i++) {
+            console.log('here line 123');
+            const fileName = files[i].name.split(' ').join('_');
+            // await pictureModel.deleteOne({ pixname: fileName });
 
-          const studentss = await studentModel.find({
-            schoolcode: req.user.schoolcode,
-          });
+            await files[i].mv(fileDir + fileName, (err) => {
+              if (err) errorarray.push(err);
+            });
+
+            await pictureModel
+              .deleteOne({ pixname: fileName })
+              .where('studentuserid')
+              .equals(student.userid);
+            addTextOnImage(`public/uploads/${fileName}`, fileName);
+            await pictureModel.create({
+              pixname: fileName,
+              for: student.name,
+              uploadedby: 'admin',
+              schoolname: student.schoolname,
+              schoolcode: student.schoolcode,
+              class: student.classs,
+              uploaddate: currentDate(),
+              wm: `/wm/${fileName}`,
+              // sn: pictureslength + 1,
+              downloadtimes: 0,
+              studentuserid: student.userid,
+              imgdir: `/uploads/${fileName}`,
+            });
+            await wmModel.create({
+              pixname: fileName,
+              for: student.name,
+              uploadedby: 'admin',
+              schoolname: student.schoolname,
+              schoolcode: student.schoolcode,
+              class: student.classs,
+              uploaddate: currentDate(),
+              wm: `/wm/${fileName}`,
+              // sn: pictureslength + 1,
+              downloadtimes: 0,
+              studentuserid: student.userid,
+              imgdir: `/uploads/${fileName}`,
+            });
+
+            // return;
+          }
 
           res.render('uplstd', {
             layout: 'upl',
@@ -157,21 +161,91 @@ module.exports = {
             title: 'File(s) uploaded successfully',
             alerte: 'Success !',
           });
-
-          // res.redirect('/photographer');
         } catch (err) {
           console.log(err);
+          res.render('uplstd', {
+            layout: 'upl',
+            admin: req.user,
+            student: student,
+            icon: 'error',
+            title: 'Oops ! Upload(s) failed',
+            alerte: errorarray,
+          });
         }
-      } else {
-        res.render('uplstd', {
-          layout: 'upl',
-          admin: req.user,
-          student: student,
-          icon: 'error',
-          title: 'This picture already exists',
-          alerte: 'you have to upload a new picture ',
-        });
       }
+      else{
+        try {
+          
+            const fileName = files.name.split(' ').join('_');
+            // await pictureModel.deleteOne({ pixname: fileName });
+
+            await files.mv(fileDir + fileName, (err) => {
+              if (err) errorarray.push(err);
+            });
+
+            await pictureModel
+              .deleteOne({ pixname: fileName })
+              .where('studentuserid')
+              .equals(student.userid);
+            addTextOnImage(`public/uploads/${fileName}`, fileName);
+            await pictureModel.create({
+              pixname: fileName,
+              for: student.name,
+              uploadedby: 'admin',
+              schoolname: student.schoolname,
+              schoolcode: student.schoolcode,
+              class: student.classs,
+              uploaddate: currentDate(),
+              wm: `/wm/${fileName}`,
+              // sn: pictureslength + 1,
+              downloadtimes: 0,
+              studentuserid: student.userid,
+              imgdir: `/uploads/${fileName}`,
+            });
+            await wmModel.create({
+              pixname: fileName,
+              for: student.name,
+              uploadedby: 'admin',
+              schoolname: student.schoolname,
+              schoolcode: student.schoolcode,
+              class: student.classs,
+              uploaddate: currentDate(),
+              wm: `/wm/${fileName}`,
+              // sn: pictureslength + 1,
+              downloadtimes: 0,
+              studentuserid: student.userid,
+              imgdir: `/uploads/${fileName}`,
+            });
+
+            // return;
+          
+
+          res.render('uplstd', {
+            layout: 'upl',
+            admin: req.user,
+            student: student,
+            icon: 'success',
+            title: 'File(s) uploaded successfully',
+            alerte: 'Success !',
+          });
+        } catch (err) {
+          console.log(err);
+          res.render('uplstd', {
+            layout: 'upl',
+            admin: req.user,
+            student: student,
+            icon: 'error',
+            title: 'Oops ! Upload(s) failed',
+            alerte: errorarray,
+          });
+        }
+      }
+      // const array = files.map((el)=>{el})
+      // const fl = files.length;
+
+      const errorarray = [];
+
+      
 
       // for(let i=0; i<file.length; i++){
       //   file[i].mv('')
@@ -308,7 +382,6 @@ module.exports = {
     // lets proceed with the next step which is encrypting our password before saving
   },
   packages: async (req, res) => {
-    
     res.render('packages', {
       layout: 'admin',
       admin: req.user,
@@ -316,8 +389,14 @@ module.exports = {
 
     // lets proceed with the next step which is encrypting our password before saving
   },
+  deleteallpictures: async (req, res) => {
+    await pictureModel.deleteMany();
+    await wmModel.deleteMany();
+    res.render('home');
+
+    // lets proceed with the next step which is encrypting our password before saving
+  },
   orders: async (req, res) => {
-    
     res.render('orders', {
       layout: 'admin',
       admin: req.user,
@@ -356,101 +435,65 @@ module.exports = {
     // lets proceed with the next step which is encrypting our password before saving
   },
   addstudent: async (req, res) => {
-    const { age } = req.body;
     const names = req.body.names.toLowerCase();
-    const pix = req.files.pix;
     const schoolcode = req.cookies.schoolcode;
     const classid = req.cookies.classcode;
-    console.log(pix + ' is pix');
     const school = await schoolModel.findOne({ schoolcode: schoolcode });
     const classs = await classModel.findOne({ idd: classid });
 
-    if (names && pix && age) {
+    if (names) {
       const schoolcode = req.cookies.schoolcode;
-      const ifstudent = await studentModel
-        .findOne({ schoolcode: schoolcode })
-        .where('name')
-        .equals(names);
 
-      if (!ifstudent) {
+      const students = await studentModel
+        .find({ classid: classid })
+        .where('schoolcode')
+        .equals(schoolcode)
+        .sort({ sn: 1 });
+      console.log(students);
+      if (students.length > 0) {
+        const lstudent = students[students.length - 1];
+
+        buta = lstudent.sn + 1;
+      } else {
+        buta = 0;
+      }
+      const classn = classs.students;
+      classs.students = students.length;
+      await classs.save();
+
+      try {
+        await studentModel.create({
+          name: names,
+          username: names + getserialnum(100000),
+          email: getserialnum(1000000),
+          classs: classs.name,
+          classid: classid,
+          schoolname: school.name,
+          regdate: currentDate(),
+          userid: getserialnum(1000000),
+          signparent: getserialnum(100000),
+          schoolcode: schoolcode,
+          sn: buta,
+        });
         const students = await studentModel
           .find({ classid: classid })
           .where('schoolcode')
           .equals(schoolcode)
-          .sort({ sn: 1 });
-        console.log(students);
-        if (students.length > 0) {
-          const lstudent = students[students.length - 1];
+          .sort({ sn: -1 });
 
-          buta = lstudent.sn + 1;
-        } else {
-          buta = 0;
-        }
-        const classn = classs.students;
-        classs.students = students.length;
-        await classs.save();
-        const fileName = pix.name.split(' ').join('_');
-
-        let fileDir = './public/profileimages/';
-        await pix.mv(fileDir + fileName, (err) => {
-          if (err) throw err;
+        res.render('adminstudents', {
+          layout: 'admin',
+          admin: req.user,
+          school: school,
+          class: classs.name,
+          students: students,
+          alerte: capitalise(names) + ' has been Registered successfully',
+          icon: 'success',
+          title: 'Success',
         });
-        const profileimage = `/profileimages/${fileName}`;
-        try {
-          await studentModel.create({
-            name: names,
-            age: age,
-            profileimage: profileimage,
-            email: getserialnum(1000000),
-            classs: classs.name,
-            classid: classid,
-            schoolname: school.name,
-            regdate: currentDate(),
-            userid: getserialnum(1000000),
-            username: names,
-            signparent: getserialnum(100000),
-            schoolcode: schoolcode,
-            sn: buta,
-          });
-          const students = await studentModel
-            .find({ classid: classid })
-            .where('schoolcode')
-            .equals(schoolcode)
-            .sort({ sn: -1 });
-
-          res.render('adminstudents', {
-            layout: 'admin',
-            admin: req.user,
-            school: school,
-            class: classs.name,
-            students: students,
-            alerte: names + ' has been Registered successfully',
-            icon: 'success',
-            title: 'Success',
-          });
-        } catch (err) {
-          console.log('cannot save details due to ' + err);
-          const classsis = await classModel.find({ schoolcode: schoolcode });
-          const students = await studentModel
-            .find({ classid: classid })
-            .where('schoolcode')
-            .equals(schoolcode)
-            .sort({ sn: -1 });
-
-          res.render('adminstudents', {
-            layout: 'admin',
-            admin: req.user,
-            school: school,
-            classses: classsis,
-            alerte: names + ' already exists',
-            icon: 'error',
-            students: students,
-            title: 'No duplicate classes allowed',
-          });
-        }
-      } else {
+      } catch (err) {
+        console.log('cannot save details due to ' + err);
         const classsis = await classModel.find({ schoolcode: schoolcode });
-
         const students = await studentModel
           .find({ classid: classid })
           .where('schoolcode')
@@ -476,18 +519,57 @@ module.exports = {
         admin: req.user,
         school: school,
         classses: classsis,
-        alerte: 'Pls fill all input fields',
+        alerte: 'Pls fillinput field',
         icon: 'error',
-        title: 'You can not submit empty fields',
+        title: 'You can not submit an empty field',
       });
     }
+  },
+  deletestudent: async (req, res) => {
+    const userid = req.params.userid;
+    const student = await Students.findOne({ userid: userid });
+    const schoolcode = req.cookies.schoolcode;
+    const idd = student.classid;
+    const cla = await classModel.findOne({ idd });
+    const school = await schoolModel.findOne({ schoolcode })
+    const pictures = await pictureModel.find({ studentuserid: student.userid });
+    try{
+      pictures.map((el) => {
+      fs.unlinkSync('public/'+el.imgdir);
+      fs.unlinkSync('public/'+el.wm);
+      })
+      await pictureModel.deleteMany({ studentuserid: student.userid });
+      await wmModel.deleteMany({ studentuserid: student.userid });
+    }
+    catch(err){
+      console.log("file deletion error due to "+err );
+    }
+    
+
+    const classses = await classModel.find({ schoolcode: schoolcode });
+    // console.log(studentss + ' is students');
+    await Students.deleteOne({ userid: userid });
+    let studentss = await Students.find({ schoolcode: schoolcode })
+      .where('classid')
+      .equals(idd)
+      .sort({ sn: -1 });
+    res.render('adminstudents', {
+      layout: 'admin',
+      school: school,
+      admin: req.user,
+      students: studentss,
+      classses: classses,
+      class: cla.name,
+
+      // alert: process.env.fillinputs,
+    });
   },
   addclass: async (req, res) => {
     const classs = req.body.class;
     const schoolcode = req.cookies.schoolcode;
     const school = await schoolModel.findOne({ schoolcode: schoolcode });
 
-    if (classs.length > 4) {
+    if (classs.length > 2) {
       const schoolcode = req.cookies.schoolcode;
       const ifclass = await classModel
         .findOne({ schoolcode })
@@ -547,9 +629,9 @@ module.exports = {
         admin: req.user,
         school: school,
         classses: classsis,
-        alerte: 'Your class name can not be empty',
+        alerte: 'Your class name is too short ',
         icon: 'error',
-        title: 'You submitted an empty input',
+        title: 'No short names pls',
       });
     }
   },

@@ -23,43 +23,36 @@
                                 {{!-- <p class="card-description">Upload page</p> --}}
                             </div>
                         </div>
+                        <h1 class="card-title">{{student.name}}</h1>
+
                         <h4 class="text-capitalize">{{student.schoolname}}</h4>
                         
-                        <h4 class="card-title">{{student.classs}}</h4>
+                        <h4 class="card-title text-muted">{{student.classs}}</h4>
 
                         
-                        <form class="forms-sample" enctype="multipart/form-data" action="/admin/uploads" method="post">
-
-                            
-                            <div class="form-group">
-                                <label>Add image</label>
-                                <input type="file" name="imga" class="form-control form-control-file"
-                                    placeholder="Upload Image" accept="image/jpg,image/jpeg,image/gif,image/png,image/svg" onchange="this.form.submit()" required/>
+                        
+                        {{!-- <form action="" method="" enctype="multipart/form-data" id="exam"></form> --}}
+                        
+                        <div class="multiple-uploader" id="multiple-uploader">
+                            <div class="mup-msg">
+                                <span class="mup-main-msg">click to upload images.</span>
+                                <span class="mup-msg" id="max-upload-number">Upload up to 10 images</span>
+                                <span class="mup-msg">Only images, pdf and psd files are allowed for upload</span>
                             </div>
-
-                            {{!-- <div class="form-group">
-                                <label>Add image</label>
-                                <input type="file" name="imgb" class="form-control form-control-file"
-                                    placeholder="Upload Image" accept="image/jpg,image/jpeg,image/gif,image/png,image/svg" />
-                            </div>
-
-                            <div class="form-group">
-                                <label>Add image</label>
-                                <input type="file" name="imgc" class="form-control form-control-file"
-                                    placeholder="Upload Image" accept="image/jpg,image/jpeg,image/gif,image/png,image/svg" />
-                            </div>
-
-                            <div class="form-group">
-                                <label>Add image</label>
-                                <input type="file" name="imgd" class="form-control form-control-file"
-                                    placeholder="Upload Image" accept="image/jpg,image/jpeg,image/gif,image/png,image/svg" />
-                            </div>
-
+                        </div>
+                        <form class="forms-sample mx-auto d-flex justify-content-center" id="exo" enctype="multipart/form-data" action="/admin/uploads" method="post">
+                        
+                        
+                        
                             <button type="submit" class="btn btn-primary mr-2">
-                                Submit
+                                Upload
                             </button>
-                            <button class="btn btn-light">Cancel</button> --}}
+                            
                         </form>
+                        
+                    </div>
+                    <div style="display: flex;justify-content:end;" class="pr-2">
+                        <a style="font-family: cursive;color:red;text-transform:capitalize" href="/admin/delete/{{student.userid}}">Delete {{student.name}}'s account</a>
                     </div>
                 </div>
             </div>

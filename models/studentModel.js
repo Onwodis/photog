@@ -32,8 +32,6 @@ const StudentSchema = new mongoose.Schema({
   },
   username: {
     type: String,
-    unique: [true, 'Username exists'],
-    required: [true, 'Username can not be empty'],
     lowercase: true,
   },
   schoolname: {
